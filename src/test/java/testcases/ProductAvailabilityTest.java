@@ -14,7 +14,7 @@ public class ProductAvailabilityTest extends BaseTest {
     public void verifyProductAvailability() {
         try {
             //Arrange
-            logger.info("");
+            logger.info("Execution started");
             String productName = "//a[contains(.,'12 Ti Xelium Skis')]";
             String addToCart = "//button[@name='add']";
 
