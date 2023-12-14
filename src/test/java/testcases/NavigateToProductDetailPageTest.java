@@ -9,10 +9,14 @@ public class NavigateToProductDetailPageTest extends BaseTest{
 
     @Test
     public void navigateToProductDetailPageTest(){
-        String productName = driver.findElement(By.xpath("//a[contains(.,'12 Ti Xelium Skis')]")).getText();
-        driver.findElement(By.xpath("//a[contains(.,'12 Ti Xelium Skis')]")).click();
+        //Arrange
+        String productName = "//a[contains(.,'12 Ti Xelium Skis')]";
+        //Act
+        String foundProductName = driver.findElement(By.xpath(productName)).getText();
+        driver.findElement(By.xpath(productName)).click();
         String productTitle = driver.findElement(By.xpath("//h1")).getText();
-        assertEquals(productName,productTitle);
+        //Assert
+        assertEquals(foundProductName,productTitle);
 
     }
 }
