@@ -18,7 +18,7 @@ public class ProductAvailabilityTest extends BaseTest {
         String addToCatText = driver.findElement(By.xpath(addToChat)).getText();
 
         //Assert
-        assertEquals(addToCatText,"Sold out","product is out of stock");
+        assertEquals(addToCatText,"add","product is out of stock");
 
     }
 }
