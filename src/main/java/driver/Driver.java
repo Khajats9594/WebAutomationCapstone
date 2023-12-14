@@ -1,5 +1,6 @@
 package driver;
 
+import constants.FrameworkConstants;
 import enums.ConfigProperties;
 import factories.DriverFactory;
 import utiles.PropertyUtils;
@@ -24,7 +25,7 @@ public final class Driver {
             }
             DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
             DriverManager.getDriver().manage().window().maximize();
-            DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+            DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(FrameworkConstants.getExplicitwait()));
         }
     }
     public static void quitDriver() {
