@@ -1,22 +1,32 @@
 package testcases;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LandingPage;
 
 import static org.testng.Assert.assertEquals;
 
 public class NavigateToProductDetailPageTest extends BaseTest{
 
+    private static final Logger logger = LogManager.getLogger(NavigateToProductDetailPageTest.class);
+
     @Test
     public void navigateToProductDetailPageTest(){
         //Arrange
-        String productName = "//a[contains(.,'12 Ti Xelium Skis')]";
+        String productName = "12 Ti Xelium Skis";
+        logger.info("Product detail page is testing using productName {}",productName);
+
         //Act
-        String foundProductName = driver.findElement(By.xpath(productName)).getText();
-        driver.findElement(By.xpath(productName)).click();
-        String productTitle = driver.findElement(By.xpath("//h1")).getText();
+        String productTitle = LandingPage.getInstance()
+                .getProduct(productName)
+                .getProductTitle();
+        logger.info("In product Details page the productName is {}", productTitle);
+
         //Assert
-        assertEquals(foundProductName,productTitle);
+        assertEquals(productTitle,productName,"The product name does not match in the product Detail page");
 
     }
 }
