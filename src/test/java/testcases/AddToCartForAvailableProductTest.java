@@ -21,23 +21,25 @@ public class AddToCartForAvailableProductTest extends BaseTest{
         //Arrange
         String productName = "//a[contains(.,'15mm Combo Wrench')]";
         String addToCart = "//button[@name='add']";
-        String cartMessageText = "//div[@class='cart-notification__header']";
+        String cartMessageText = "//div[@id='cart-notification']";
         String viewCartPage = "//a[@id='cart-notification-button']";
         String itemOnCartCount = "//input[@aria-label='Quantity for 15mm Combo Wrench']";
 
         //Act
         driver.findElement(By.xpath(productName)).click();
         driver.findElement(By.xpath(addToCart)).click();
-        String element = new WebDriverWait(driver, Duration.ofSeconds(20))
+        String addToCartMessage = new WebDriverWait(driver, Duration.ofSeconds(20))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(cartMessageText)))
-                .getText();
+                .getAttribute("aria-label");
+
         new WebDriverWait(driver, Duration.ofSeconds(10))
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(viewCartPage)))
                 .click();
 
-        String value = driver.findElement(By.xpath(itemOnCartCount)).getAttribute("value");
+        String itemCount = driver.findElement(By.xpath(itemOnCartCount)).getAttribute("value");
 
         //Assert
-        Assert.assertEquals(value,"1","Product is not added properly");
+        Assert.assertEquals(addToCartMessage,"Item added to your cart","Item added message not found or incorrect.");
+        Assert.assertTrue(Integer.valueOf(itemCount) > 0, "Cart item count was not incremented.");
     }
 }

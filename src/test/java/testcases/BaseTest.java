@@ -1,5 +1,8 @@
 package testcases;
 
+import driver.Driver;
+import driver.DriverManager;
+import enums.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -33,10 +36,8 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        driver = new ChromeDriver();
-        driver.get("https://web-playground.ultralesson.com/.");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        Driver.initDriver("chrome");
+        driver = DriverManager.getDriver();
     }
 
     @AfterMethod
