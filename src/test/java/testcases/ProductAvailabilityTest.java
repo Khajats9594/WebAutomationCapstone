@@ -1,9 +1,8 @@
 package testcases;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 public class ProductAvailabilityTest extends BaseTest {
 
@@ -18,7 +17,7 @@ public class ProductAvailabilityTest extends BaseTest {
         String addToCatText = driver.findElement(By.xpath(addToChat)).getText();
         //Assert
         if(addToCatText.equalsIgnoreCase("Sold out")){
-//            assertEquals(addToCatText,"Buy it now","product is out of stock");
+            Assert.assertEquals(addToCatText,"Buy it now","product is out of stock");
             System.out.println("product is out of stock");
         }else {
             driver.findElement(By.xpath(addToChat)).click();
