@@ -21,14 +21,14 @@ public class ProductAvailabilityTest extends BaseTest {
             //Assert
             if (addToCatText.equalsIgnoreCase("Sold out")) {
                 System.out.println("product is out of stock");
-                Assert.assertFalse(false);
+                Assert.assertFalse(false,"product is out of stock");
             } else {
                 driver.findElement(By.xpath(addToCart)).click();
                 System.out.println("product is available");
             }
         } catch (NoSuchElementException e) {
             System.out.println("Element not found ");
-            Assert.assertFalse(false);
+            Assert.assertFalse(false,"Element not found ");
         }
 
     }
