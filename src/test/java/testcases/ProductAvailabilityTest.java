@@ -8,6 +8,7 @@ public class ProductAvailabilityTest extends BaseTest {
 
     @Test
     public void verifyProductAvailability(){
+
         //Arrange
         String productName = "//a[contains(.,'12 Ti Xelium Skis')]";
         String addToCart = "//button[@name='add']";
@@ -18,11 +19,10 @@ public class ProductAvailabilityTest extends BaseTest {
         //Assert
         if(addToCatText.equalsIgnoreCase("Sold out")){
             System.out.println("product is out of stock");
-            System.exit(0);
+            Assert.assertFalse(false);
         }else {
             driver.findElement(By.xpath(addToCart)).click();
             System.out.println("product is available");
         }
-
     }
 }
