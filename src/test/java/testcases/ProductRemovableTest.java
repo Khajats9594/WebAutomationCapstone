@@ -21,7 +21,8 @@ public class ProductRemovableTest extends BaseTest{
                 .navigateToProductPage(productName)
                 .addToCart()
                 .clickViewCartPageBtn()
-                .verifyProductRemovable(productName);
+                .removeProduct(productName)
+                .isProductRemoved(productName);
         logger.info("Product is removed? {}",verifiedProductRemovable);
 
         //Assert

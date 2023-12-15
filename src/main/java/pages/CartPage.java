@@ -3,7 +3,6 @@ package pages;
 import entity.Product;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import utiles.DynamicXpath;
 
 public class CartPage extends BasePage{
@@ -27,7 +26,6 @@ public class CartPage extends BasePage{
         String prod = getText(By.xpath(DynamicXpath.getXpath(product, productName)), WaitStrategy.PRESENCE);
         String count = getValueAttribute(By.xpath(DynamicXpath.getXpath(productCount, productName)), WaitStrategy.NONE);
         String price = getText(By.xpath(DynamicXpath.getXpath(productPrice, productName)), WaitStrategy.NONE);
-        System.out.println(prod+" : "+count+" : "+price);
 
         return Product.builder()
                 .setProductName(prod)
@@ -36,8 +34,11 @@ public class CartPage extends BasePage{
                 .build();
     }
 
-    public boolean verifyProductRemovable(String productName){
+    public CartPage removeProduct(String productName){
         click(By.xpath(DynamicXpath.getXpath(remove,productName)),WaitStrategy.VISIBLE);
+        return this;
+    }
+    public boolean isProductRemoved(String productName){
         try {
             Thread.sleep(2000);
             boolean present = isPresent(By.xpath(DynamicXpath.getXpath(product, productName)), WaitStrategy.REFRESH);
