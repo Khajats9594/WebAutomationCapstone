@@ -2,8 +2,6 @@ package testcases;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LandingPage;
 
@@ -21,7 +19,7 @@ public class NavigateToProductDetailPageTest extends BaseTest{
 
         //Act
         String productTitle = LandingPage.getInstance()
-                .getProduct(productName)
+                .navigateToProductPage(productName)
                 .getProductTitle();
         logger.info("In product Details page the productName is {}", productTitle);
 

@@ -2,8 +2,6 @@ package testcases;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LandingPage;
@@ -42,7 +40,7 @@ public class ProductAvailabilityTest extends BaseTest {
 
         //Act
         String addToCartText = LandingPage.getInstance()
-                .getProduct(productName)
+                .navigateToProductPage(productName)
                 .getAddToCartText();
         logger.info("Add to cart message is {}",addToCartText);
 

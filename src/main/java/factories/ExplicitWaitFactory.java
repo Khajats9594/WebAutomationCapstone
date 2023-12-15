@@ -27,6 +27,12 @@ public final class ExplicitWaitFactory {
         } else if (waitstrategy == WaitStrategy.VISIBLE) {
             element = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getExplicitwait()))
                     .until(ExpectedConditions.visibilityOfElementLocated(by));
+        } else if (waitstrategy == WaitStrategy.REFRESH) {
+            new WebDriverWait(DriverManager.getDriver(),Duration.ofSeconds(FrameworkConstants.getExplicitwait()))
+                    .until(d->{
+                        d.navigate().refresh();
+                        return d.findElement(by);
+                    });
         } else if (waitstrategy == WaitStrategy.NONE) {
             element = DriverManager.getDriver().findElement(by);
         }

@@ -14,8 +14,8 @@ public class LandingPage extends BasePage{
 
     private final String product = "//a[contains(.,'%replaceable%')]";
 
-    public ProductDetailsPage getProduct(String productName){
-        click(By.xpath(DynamicXpath.getXpath(product,productName)), WaitStrategy.VISIBLE);
+    public ProductDetailsPage navigateToProductPage(String productName){
+        click(By.xpath(DynamicXpath.getXpath(product,productName)), WaitStrategy.NONE);
         return new ProductDetailsPage();
     }
 

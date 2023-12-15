@@ -3,12 +3,12 @@ package testcases;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LandingPage;
+import pages.ProductDetailsPage;
 
 import java.time.Duration;
 
@@ -51,8 +51,8 @@ public class AddToCartForAvailableProductTest extends BaseTest{
 
         //Act
         String countOfProductInCart = LandingPage.getInstance()
-                .getProduct(productName)
-                .clickAddToCart()
+                .navigateToProductPage(productName)
+                .addToCart()
                 .clickViewCartPageBtn()
                 .getCountOfProductInCart(productName);
         int countOfProduct = Integer.parseInt(countOfProductInCart);
@@ -70,12 +70,19 @@ public class AddToCartForAvailableProductTest extends BaseTest{
 
         //Act
         String messageOfADDToCart = LandingPage.getInstance()
-                .getProduct(productName)
-                .clickAddToCart()
+                .navigateToProductPage(productName)
+                .addToCart()
                 .getSuccessMessageOfADDToCart();
         logger.info("Message is display when the product is add to cart is {}",messageOfADDToCart);
 
+        String countOfProductInCart = ProductDetailsPage.getInstance()
+                .clickViewCartPageBtn()
+                .getCountOfProductInCart(productName);
+        int countOfProduct = Integer.parseInt(countOfProductInCart);
+        logger.info("Count of product for product name {} is {} ",productName,countOfProduct);
+
         //Assert
         Assert.assertEquals(messageOfADDToCart,"Item added to your cart","Item added message not found or incorrect.");
+        Assert.assertTrue(countOfProduct > 0, "Cart item count was not incremented.");
     }
 }

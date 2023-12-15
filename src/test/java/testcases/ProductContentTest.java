@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
 import pages.LandingPage;
 
 public class ProductContentTest extends BaseTest{
@@ -20,8 +19,8 @@ public class ProductContentTest extends BaseTest{
 
         //Act
         Product detailsOfProduct = LandingPage.getInstance()
-                .getProduct(productName)
-                .clickAddToCart()
+                .navigateToProductPage(productName)
+                .addToCart()
                 .clickViewCartPageBtn()
                 .getDetailsOfProduct(productName);
         logger.info("Details of product which is selected is {}",detailsOfProduct);

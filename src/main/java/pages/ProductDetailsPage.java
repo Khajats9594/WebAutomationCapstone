@@ -7,7 +7,7 @@ public class ProductDetailsPage extends BasePage {
 
     protected ProductDetailsPage(){}
 
-    public ProductDetailsPage getInstance(){
+    public static ProductDetailsPage getInstance(){
         return new ProductDetailsPage();
     }
     private final By productTitle = By.xpath("//h1");
@@ -21,7 +21,7 @@ public class ProductDetailsPage extends BasePage {
     public String getAddToCartText(){
         return getText(addToCart,WaitStrategy.NONE);
     }
-    public ProductDetailsPage clickAddToCart(){
+    public ProductDetailsPage addToCart(){
         click(addToCart,WaitStrategy.NONE);
         return this;
     }
@@ -29,7 +29,7 @@ public class ProductDetailsPage extends BasePage {
         return getText(toastMessage,WaitStrategy.VISIBLE);
     }
     public CartPage clickViewCartPageBtn(){
-        click(viewCart,WaitStrategy.NONE);
+        click(viewCart,WaitStrategy.VISIBLE);
         return new CartPage();
     }
 

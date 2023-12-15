@@ -1,6 +1,5 @@
 package pages;
 
-import driver.DriverManager;
 import enums.WaitStrategy;
 import factories.ExplicitWaitFactory;
 import org.openqa.selenium.By;
@@ -24,5 +23,14 @@ public class BasePage {
     protected String getText(By by,WaitStrategy waitStrategy) {
         return ExplicitWaitFactory.performExplicitWait(waitStrategy,by)
                 .getText();
+    }
+
+    protected String getValueAttribute(By by, WaitStrategy waitStrategy){
+        return ExplicitWaitFactory.performExplicitWait(waitStrategy,by)
+                .getAttribute("value");
+    }
+
+    protected boolean isPresent(By by, WaitStrategy waitStrategy){
+        return ExplicitWaitFactory.performExplicitWait(waitStrategy,by).isDisplayed();
     }
 }
