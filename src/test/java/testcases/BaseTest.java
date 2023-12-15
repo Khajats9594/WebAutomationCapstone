@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import utiles.PropertyUtils;
 
 import java.time.Duration;
 
@@ -36,7 +37,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        Driver.initDriver("chrome");
+        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
         driver = DriverManager.getDriver();
     }
 
