@@ -1,19 +1,12 @@
 package testcases;
 
 import driver.Driver;
-import driver.DriverManager;
-import driverone.DriverFactory;
-import driverone.WebDriverBuilder;
-import driverone.WebDriverManager;
-import enums.BrowserType;
 import enums.ConfigProperties;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import utiles.PropertyUtils;
 
-import java.time.Duration;
 
 public class BaseTest {
 
@@ -41,16 +34,12 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        WebDriverManager build = new WebDriverBuilder()
-                .setChromeDriver()
-                .build();
-        driver = build.getDriver();
-        driver.get("https://web-playground.ultralesson.com/.");
+        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        Driver.quitDriver();
     }
 
 }
