@@ -2,6 +2,10 @@ package testcases;
 
 import driver.Driver;
 import driver.DriverManager;
+import driverone.DriverFactory;
+import driverone.WebDriverBuilder;
+import driverone.WebDriverManager;
+import enums.BrowserType;
 import enums.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -37,13 +41,16 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
-        driver = DriverManager.getDriver();
+        WebDriverManager build = new WebDriverBuilder()
+                .setChromeDriver()
+                .build();
+        driver = build.getDriver();
+        driver.get("https://web-playground.ultralesson.com/.");
     }
 
     @AfterMethod
     public void tearDown() {
-        Driver.quitDriver();
+        driver.quit();
     }
 
 }
