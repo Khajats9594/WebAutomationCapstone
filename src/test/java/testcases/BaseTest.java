@@ -1,6 +1,6 @@
 package testcases;
 
-import driver.Driver;
+import drivertwo.Driver;
 import enums.ConfigProperties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -34,12 +34,13 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() {
-        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
+//        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
+        Driver.initDriver();
     }
 
     @AfterMethod
     public void tearDown() {
-        Driver.quitDriver();
+       Driver.quitDriver();
     }
 
 }
