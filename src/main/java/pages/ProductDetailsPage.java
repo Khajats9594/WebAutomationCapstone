@@ -1,11 +1,14 @@
 package pages;
 
 import enums.WaitStrategy;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 
 public class ProductDetailsPage extends BasePage {
 
     protected ProductDetailsPage(){}
+    private static final Logger logger = LogManager.getLogger(ProductDetailsPage.class);
 
     public static ProductDetailsPage getInstance(){
         return new ProductDetailsPage();
@@ -20,6 +23,15 @@ public class ProductDetailsPage extends BasePage {
     }
     public String getAddToCartText(){
         return getText(addToCart,WaitStrategy.NONE);
+    }
+
+    public boolean verifyProductAvailability(){
+        String text = getText(addToCart, WaitStrategy.NONE);
+        if(text.equalsIgnoreCase(" Sold out")){
+            logger.error("Product is out of Stock");
+            return false;
+        }
+        return true;
     }
     public ProductDetailsPage addToCart(){
         click(addToCart,WaitStrategy.NONE);
