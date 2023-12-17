@@ -1,7 +1,7 @@
 package factories;
 
 import constants.FrameworkConstants;
-import driver.DriverManager;
+import drivertwo.DriverManager;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

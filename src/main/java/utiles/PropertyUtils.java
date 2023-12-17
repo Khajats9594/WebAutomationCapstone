@@ -1,6 +1,9 @@
 package utiles;
 
 import constants.FrameworkConstants;
+import enums.BrowserRemoteModeType;
+import enums.BrowserRunModeType;
+import enums.BrowserType;
 import enums.ConfigProperties;
 
 import java.io.FileInputStream;
@@ -40,5 +43,41 @@ public final class PropertyUtils {
         }
         throw new RuntimeException("Property name " + key + " is not found. Please check config.properties");
     }
+
+    public static BrowserType getBrowserType(){
+        String sysBrowserValue = System.getProperty("browser");
+        if (Objects.nonNull(sysBrowserValue)) {
+            return BrowserType.valueOf(sysBrowserValue.toUpperCase());
+        }
+        String browser = CONFIGMAP.get("browser");
+        if (Objects.nonNull(browser)) {
+            return BrowserType.valueOf(browser.toUpperCase());
+        }
+        throw new RuntimeException("Property name " + browser + " is not found. Please check config.properties");
+    }
+    public static BrowserRemoteModeType getRemoteMode() {
+        String sysRemoteModeValue = System.getProperty("browserRemoteMode");
+        if (Objects.nonNull(sysRemoteModeValue)) {
+            return BrowserRemoteModeType.valueOf(sysRemoteModeValue.toUpperCase());
+        }
+        String remoteMode = CONFIGMAP.get("browserRemoteMode");
+        if (Objects.nonNull(remoteMode)) {
+            return BrowserRemoteModeType.valueOf(remoteMode.toUpperCase());
+        }
+        throw new RuntimeException("Property 'browserRemoteMode' is not found. Please check config.properties");
+    }
+    public static BrowserRunModeType getRunMode() {
+        String sysRunModeValue = System.getProperty("browserRunMode");
+        if (Objects.nonNull(sysRunModeValue)) {
+            return BrowserRunModeType.valueOf(sysRunModeValue.toUpperCase());
+        }
+        String remoteMode = CONFIGMAP.get("browserRunMode");
+        if (Objects.nonNull(remoteMode)) {
+            return BrowserRunModeType.valueOf(remoteMode.toUpperCase());
+        }
+        throw new RuntimeException("Property 'remoteMode' is not found. Please check config.properties");
+    }
+
+
 
 }

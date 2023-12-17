@@ -11,7 +11,7 @@ public final class LocalDriverFactory {
     private LocalDriverFactory(){}
 
     public static WebDriver getDriver(BrowserType browserType){
-        return isBrowserChrome()
+        return browserType == BrowserType.CHROME
                 ? ChromeManager.getDriver()
                 : FireFoxManager.getDriver();
 
