@@ -21,7 +21,7 @@ public final class Driver {
 //                .build();
         WebDriverData webDriverData = WebDriverData.builder()
                 .browserRunModeType(PropertyUtils.getRunMode())
-//                .browserRemoteModeType(PropertyUtils.getRemoteMode())
+                .browserRemoteModeType(PropertyUtils.getRemoteMode())
                 .browserType(PropertyUtils.getBrowserType())
                 .build();
         WebDriver driver = DriverFactory.getDriverForWeb(webDriverData);
