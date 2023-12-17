@@ -65,6 +65,7 @@ public final class PropertyUtils {
             return BrowserRemoteModeType.valueOf(remoteMode.toUpperCase());
         }
         throw new RuntimeException("Property 'browserRemoteMode' is not found. Please check config.properties");
+
     }
     public static BrowserRunModeType getRunMode() {
         String sysRunModeValue = System.getProperty("browserRunMode");
