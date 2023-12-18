@@ -33,6 +33,9 @@ public class ProductDetailsPage extends BasePage {
         }
         return true;
     }
+    public boolean isAddToCartEnable(){
+        return isEnable(addToCart);
+    }
     public ProductDetailsPage addToCart(){
         click(addToCart,WaitStrategy.NONE);
         return this;
