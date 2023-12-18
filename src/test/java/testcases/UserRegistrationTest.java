@@ -13,7 +13,7 @@ import java.util.Map;
 public class UserRegistrationTest extends BaseTest {
     private static final Logger logger = LogManager.getLogger(UserRegistrationTest.class);
     @Test
-    public void userRegistrationTest() throws InterruptedException {
+    public void userRegistrationTest(){
         //Arrange
         UserDetail validUserData = UserTestData.getValidUserData();
         logger.info("Testing the registration functionality with the userdata {}",validUserData);
