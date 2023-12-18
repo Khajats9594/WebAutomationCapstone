@@ -17,12 +17,13 @@ public class ProductAvailabilityTest extends BaseTest {
         logger.info("Product detail page is testing using productName {}", productName);
 
         //Act
-        boolean addToCartEnable = LandingPage.getInstance()
+        String addToCartText = LandingPage.getInstance()
                 .navigateToProductPage(productName)
-                .isAddToCartEnable();
+                .getAddToCartText();
+        logger.info("Add to cart message is {}", addToCartText);
 
         //Assert
-        if (!addToCartEnable) {
+        if (addToCartText.equalsIgnoreCase("Sold out")) {
             logger.error("Product is out of stock");
             Assert.fail("Product is out of stock, ending test.");
         } else {
