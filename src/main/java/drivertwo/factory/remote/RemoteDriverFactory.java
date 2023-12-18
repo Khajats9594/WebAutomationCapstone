@@ -10,11 +10,8 @@ public final class RemoteDriverFactory {
 
     public static WebDriver getDriver(BrowserRemoteModeType browserRemoteModeType, BrowserType browserType){
 
-        if(browserRemoteModeType == BrowserRemoteModeType.SELENIUM){
-            return SeleniumGridFactory.getDriver(browserType);
-        } else if (browserRemoteModeType == BrowserRemoteModeType.BROWSERSTACK){
-            return BrowserstackFactory.getDriver(browserType);
-        }
-        return null;
+      return  browserRemoteModeType == BrowserRemoteModeType.SELENIUM
+                ? SeleniumGridFactory.getDriver(browserType)
+                : BrowserstackFactory.getDriver(browserType);
     }
 }
