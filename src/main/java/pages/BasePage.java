@@ -45,4 +45,7 @@ public class BasePage {
     protected String getTitle(){
         return DriverManager.getDriver().getTitle();
     }
+    protected boolean isEnable(By by){
+        return DriverManager.getDriver().findElement(by).isEnabled();
+    }
 }
