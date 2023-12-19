@@ -1,12 +1,13 @@
 package testcases;
 
-import entity.UserDetail;
+import entity.Registration;
+import entity.RegistrationData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.LandingPage;
-import testData.UserTestData;
+import testData.RegistrationTestData;
 
 import java.util.Map;
 
@@ -15,14 +16,14 @@ public class UserRegistrationTest extends BaseTest {
     @Test
     public void userRegistrationTest(){
         //Arrange
-        UserDetail validUserData = UserTestData.getValidUserData();
-        logger.info("Testing the registration functionality with the userdata {}",validUserData);
+        Registration validRegistrationData = RegistrationTestData.getValidUserData();
+        logger.info("Testing the registration functionality with the userdata {}",validRegistrationData);
 
         //Act
         String accountPageDashboardText = LandingPage.getInstance()
                 .navigateToLoginPage()
                 .navigateToCreateAccountPage()
-                .createAccountForValidData(validUserData)
+                .createAccountForValidData(validRegistrationData)
                 .navigateRegisterAccountPage()
                 .verifyLoginFunction();
 
@@ -35,14 +36,14 @@ public class UserRegistrationTest extends BaseTest {
     @Test
     public void userRegistrationWithInvalidData(){
         //Arrange
-        UserDetail invalidUserData = UserTestData.getInvalidUserData();
-        logger.info("Testing the registration functionality with the userdata {}",invalidUserData);
+        Registration invalidRegistrationData = RegistrationTestData.getInvalidUserData();
+        logger.info("Testing the registration functionality with the userdata {}",invalidRegistrationData);
 
         //Act
         Map<String, String> errorMessagesOfRegistrationForm = LandingPage.getInstance()
                 .navigateToLoginPage()
                 .navigateToCreateAccountPage()
-                .createAccountForInvalidData(invalidUserData)
+                .createAccountForInvalidData(invalidRegistrationData)
                 .getErrorMessagesOfRegistrationForm();
         logger.info("The error message is {}",errorMessagesOfRegistrationForm);
 
