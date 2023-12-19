@@ -1,0 +1,14 @@
+{
+  "validRegistrationData": {
+    "firstName": "Jon123",
+    "lastName": "Akbar123",
+    "email": "ktsa@gmail.com",
+    "password": "jonAkbar12345"
+  },
+  "inValidRegistrationData": {
+    "firstName": "Jon12",
+    "lastName": "Akbar12",
+    "email": "jonAkbar12",
+    "password": "jo"
+  }
+}
