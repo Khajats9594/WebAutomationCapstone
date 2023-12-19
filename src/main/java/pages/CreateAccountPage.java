@@ -1,9 +1,9 @@
 package pages;
 
-import entity.UserDetail;
+import entity.Registration;
+import entity.RegistrationData;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 
 import java.util.Map;
 
@@ -22,20 +22,20 @@ public final class CreateAccountPage extends BasePage {
     private final By passwordErrorMessage = By.xpath("//a[contains(text(),'is too short (minimum is ')]");
     private final By emailErrorMessage = By.xpath("//a[contains(text(),'is invalid')]");
 
-    public LandingPage createAccountForValidData(UserDetail validUserDetail) {
-        createAccount(validUserDetail);
+    public LandingPage createAccountForValidData(Registration validRegistrationDetail) {
+        createAccount(validRegistrationDetail);
         return new LandingPage();
     }
 
-    private void createAccount(UserDetail userDetail) {
-        sendKey(firstName, userDetail.getFirstName(), WaitStrategy.VISIBLE);
-        sendKey(lastName, userDetail.getLastName(), WaitStrategy.VISIBLE);
-        sendKey(email, userDetail.getEmail(), WaitStrategy.VISIBLE);
-        sendKey(password, userDetail.getPassword(), WaitStrategy.VISIBLE);
+    private void createAccount(Registration registrationDetail) {
+        sendKey(firstName, registrationDetail.getFirstName(), WaitStrategy.VISIBLE);
+        sendKey(lastName, registrationDetail.getLastName(), WaitStrategy.VISIBLE);
+        sendKey(email, registrationDetail.getEmail(), WaitStrategy.VISIBLE);
+        sendKey(password, registrationDetail.getPassword(), WaitStrategy.VISIBLE);
         click(clickBtn, WaitStrategy.VISIBLE);
     }
 
-    public CreateAccountPage createAccountForInvalidData(UserDetail InvalidUserDetail) {
+    public CreateAccountPage createAccountForInvalidData(Registration InvalidUserDetail) {
         createAccount(InvalidUserDetail);
         return this;
     }

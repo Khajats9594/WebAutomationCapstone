@@ -12,7 +12,7 @@ public class LandingPage extends BasePage{
     }
 
     private final String product = "//a[contains(.,'%replaceable%')]";
-    private final By loginLink = By.xpath("//a[@class='header__icon header__icon--account link focus-inset small-hide']");
+    private final By loginLink = By.xpath("//a[@id='cart-icon-bubble']//preceding-sibling::a");
     private final By account = By.xpath("//a[@class='header__icon header__icon--account link focus-inset small-hide']");
     private final By searchBtn = By.xpath("//summary[@aria-label='Search']");
     private final By searchBar = By.xpath("//input[@id='Search-In-Modal']");
@@ -23,7 +23,7 @@ public class LandingPage extends BasePage{
         return new ProductDetailsPage();
     }
     public LoginPage navigateToLoginPage(){
-        click(loginLink,WaitStrategy.CLICKABLE);
+        click(loginLink,WaitStrategy.VISIBLE);
         return new LoginPage();
     }
     public AccountPage navigateRegisterAccountPage(){
