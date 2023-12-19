@@ -23,7 +23,7 @@ public class LandingPage extends BasePage{
         return new ProductDetailsPage();
     }
     public LoginPage navigateToLoginPage(){
-        click(loginLink,WaitStrategy.NONE);
+        click(loginLink,WaitStrategy.CLICKABLE);
         return new LoginPage();
     }
     public AccountPage navigateRegisterAccountPage(){
