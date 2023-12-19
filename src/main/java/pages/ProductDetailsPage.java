@@ -25,14 +25,6 @@ public class ProductDetailsPage extends BasePage {
         return getText(addToCart,WaitStrategy.NONE);
     }
 
-    public boolean verifyProductAvailability(){
-        String text = getText(addToCart, WaitStrategy.NONE);
-        if(text.equalsIgnoreCase(" Sold out")){
-            logger.error("Product is out of Stock");
-            return false;
-        }
-        return true;
-    }
     public boolean isAddToCartEnable(){
         return isEnable(addToCart);
     }
