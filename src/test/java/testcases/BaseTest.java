@@ -30,8 +30,6 @@ public class BaseTest {
     7. Include proper test data management strategies for efficient testing.
      */
 
-    WebDriver driver;
-
     @BeforeMethod
     public void setup() {
 //        Driver.initDriver(PropertyUtils.get(ConfigProperties.BROWSER));
