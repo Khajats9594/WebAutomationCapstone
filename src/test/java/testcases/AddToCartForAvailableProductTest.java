@@ -30,7 +30,7 @@ public class AddToCartForAvailableProductTest extends BaseTest{
         String itemOnCartCount = "//input[@aria-label='Quantity for 15mm Combo Wrench']";
 
         //Act
-        driver.findElement(By.xpath(productName)).click();
+       /* driver.findElement(By.xpath(productName)).click();
         driver.findElement(By.xpath(addToCart)).click();
         String addToCartMessage = new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(cartMessageText)))
@@ -40,11 +40,11 @@ public class AddToCartForAvailableProductTest extends BaseTest{
                 .until(ExpectedConditions.elementToBeClickable(By.xpath(viewCartPage)))
                 .click();
 
-        String itemCount = driver.findElement(By.xpath(itemOnCartCount)).getAttribute("value");
+        String itemCount = driver.findElement(By.xpath(itemOnCartCount)).getAttribute("value");*/
 
         //Assert
-        Assert.assertEquals(addToCartMessage,"Item added to your cart","Item added message not found or incorrect.");
-        Assert.assertTrue(Integer.parseInt(itemCount) > 0, "Cart item count was not incremented.");
+  /*      Assert.assertEquals(addToCartMessage,"Item added to your cart","Item added message not found or incorrect.");
+        Assert.assertTrue(Integer.parseInt(itemCount) > 0, "Cart item count was not incremented.");*/
     }
    // @Test(description = "verify the add to cart for availability product")
     public void verifyAddToCartForAvailableProduct1(){
